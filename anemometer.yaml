@@ -1,0 +1,39 @@
+i2c:
+  sda: 4
+  scl: 5
+  scan: True
+
+sensor:
+  - platform: pulse_counter
+    pin: 
+      number: GPIO14
+      mode: INPUT_PULLUP
+    unit_of_measurement: 'm/s'
+    name: 'Wind sensor'
+    icon: 'mdi:weather-windy'
+    id: my_wind
+    count_mode:
+      rising_edge: DISABLE
+      falling_edge: INCREMENT
+    internal_filter: 50us
+    update_interval: 60s
+    on_raw_value:
+      then:
+        - sensor.template.publish:
+            id: template_sens
+            state: !lambda "return x;"
+    accuracy_decimals: 2
+    filters:
+      - multiply: 0.0055578
+      - sliding_window_moving_average:
+          window_size: 2
+          send_every: 1
+          
+  - platform: template
+    name: "Template Sensor"
+    id: template_sens
+    filters:
+      - multiply: 16.764
+      - sliding_window_moving_average:
+          window_size: 60
+          send_every: 1
