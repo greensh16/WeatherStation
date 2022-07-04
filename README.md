@@ -51,7 +51,7 @@ I used ESPHome and Home Assistant to communicate between the D1 Mini and a Raspb
 This seems to last about 2 days on a full battery, haven't fully tested in the sun yet.
 
 ## 3. Anemometer
-Attempting to make my own anemometer from scratch. Used this project as a basis for the 3D model and this website for the electronics basis.
+Attempting to make my own anemometer from scratch. Used this [project](https://www.thingiverse.com/thing:2849562) as a basis for the 3D model and this [website](https://projects.raspberrypi.org/en/projects/build-your-own-weather-station/0) for the electronics basis.
 
 ![My Image](Images/anemometer.jpg)
 
